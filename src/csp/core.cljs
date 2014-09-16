@@ -43,15 +43,15 @@
         secret-combination [:a :b :b :a :b :a]
         set-html! (partial set-html! "ex1-card")]
     (go
-      (loop [current-clicks []
+      (loop [correct-clicks []
              timeout (async/timeout combination-max-time)]
         (let [[val channel] (alts! [a b timeout])
-              clicks (conj current-clicks val)]
+              clicks (conj correct-clicks val)]
           (cond
             (= channel timeout) (do (set-html! "You're not fast enough, try again!") (recur [] (async/timeout combination-max-time)))
             (= clicks secret-combination) (do (set-html! "Combination unlocked!") (recur [] (async/timeout combination-max-time)))
-            (and (= val (first secret-combination)) (zero? (count current-clicks))) (do (set-html! clicks) (recur clicks (async/timeout combination-max-time))) ;Reset timeout when first match!
-            (= val (nth secret-combination (count current-clicks))) (do (set-html! clicks) (recur clicks timeout))
+            (and (= val (first secret-combination)) (zero? (count correct-clicks))) (do (set-html! clicks) (recur clicks (async/timeout combination-max-time))) ;Reset timeout when first match!
+            (= val (nth secret-combination (count correct-clicks))) (do (set-html! clicks) (recur clicks timeout))
             :else
             (do (set-html! clicks) (recur [] timeout))))))))
 
