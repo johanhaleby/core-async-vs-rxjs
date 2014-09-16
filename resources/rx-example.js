@@ -14,7 +14,7 @@ $(function () {
 
     var evaluationStream = bothButtons
       .merge(bothButtons.throttle(5000).map(function(){return "reset";}))
-      .scan(function(acc, x) { // (1)
+      .scan(function(acc, x) {
                 if (x === "reset") return "";
                 return acc + x;
             })
