@@ -8,25 +8,29 @@ $(function () {
         return "B";
     });
 
-    var example12 = $("#ex2-card");
+    var card = $("#ex2-card");
 
     var bothButtons = Rx.Observable.merge(buttonA, buttonB);
 
     var evaluationStream = bothButtons
       .merge(bothButtons.throttle(5000).map(function(){return "reset";}))
       .scan(function(acc, x) { // (1)
-        if (x === "reset") return "";
-        var newAcc = acc + x;
-        if (newAcc.length > secretCombination.length) {
-          return newAcc.substr(newAcc.length - secretCombination.length);
-        }
-        else {
-          return newAcc;
-        }
-      })
+                if (x === "reset") return "";
+                return acc + x;
+            })
+      .map(function(newAcc) {
+                if (newAcc.length > secretCombination.length) {
+                    return newAcc.substr(newAcc.length - secretCombination.length);
+                } else {
+                    return newAcc;
+                }
+            })
+            .do(function(combination){
+                card.html(combination);
+            })
       .map(function(combination) {
-        return combination === secretCombination;
-      });
+                return combination === secretCombination;
+            });
 
     var wrongStream = evaluationStream
       .throttle(5000)
@@ -36,11 +40,11 @@ $(function () {
       .filter(function(result) { return result === true; });
 
     wrongStream.subscribe(function() {
-        example12.html("Too slow or wrong!");
+        card.html("Too slow or wrong!");
     });
 
     correctStream.subscribe(function() {
-        example12.html("Combination unlocked!");
+        card.html("Combination unlocked!");
     });
 
 });
