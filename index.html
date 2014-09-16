@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+    </head>
+    <body>
+        <div id="description" class="example">
+            Secret combination is "ABBABA"
+        </div>
+
+        <!-- Core Async Example -->
+        <div id="ex1" class="example">
+            <h2>Core Async Example</h2>
+            <table>
+                <tr>
+                    <td class="left">
+                        <button id="ex1-button-a">A</button>
+                        <button id="ex1-button-b">B</button>
+                    </td>
+                    <td id="ex1-card" class="display card"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- RxJS -->
+        <div id="ex2" class="example">
+            <h2>RxJS Example</h2>
+            <table>
+                <tr>
+                    <td class="left">
+                        <button id="ex2-button-a">A</button>
+                        <button id="ex2-button-b">B</button>
+                    </td>
+                    <td id="ex2-card" class="display card"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="out/goog/base.js" type="text/javascript"></script>
+        <script src="csp.js" type="text/javascript"></script>
+        <script src="resources/js/rx.all.min.js" type="text/javascript"></script>
+        <script src="resources/js/rx.jquery.min.js" type="text/javascript"></script>
+        <script src="resources/rx-example.js" type="text/javascript"></script>
+        <script type="text/javascript">goog.require("csp.core");</script>
+    </body>
+</html>
