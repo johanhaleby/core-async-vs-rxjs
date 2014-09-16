@@ -25,7 +25,7 @@ $(function () {
                     return newAcc;
                 }
             })
-            .do(function(combination){
+      .do(function(combination){
                 card.html(combination);
             })
       .map(function(combination) {
