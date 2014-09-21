@@ -1,5 +1,5 @@
 ## Introduction
-A simple application that compares core async in ClojureScript with RxJS in Javascript for a particular use case. 
+A simple application that compares core async in ClojureScript with RxJS in Javascript for a particular <a href="http://www.jayway.com/2014/09/16/comparing-core-async-and-rx-by-example/">use case</a>. 
 A lot of inspiration (and code) is taken from the <a href="https://github.com/cognitect/async-webinar">core async</a> webinar.
 Thanks to <a href="http://staltz.com/">André Staltz</a> for helping out with the RxJS implementation.
 
